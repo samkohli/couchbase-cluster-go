@@ -448,7 +448,7 @@ func (s SyncGwCluster) generateFleetUnitJson() (string, error) {
         {
             "section":"Service",
             "name":"ExecStartPre",
-            "value":"/usr/bin/docker pull tleyden5iwx/sync-gateway-coreos:{{ .CONTAINER_TAG }}"
+            "value":"/usr/bin/docker pull samkohli/sync-gateway-coreos:{{ .CONTAINER_TAG }}"
         },
         {
             "section":"Service",
@@ -458,7 +458,7 @@ func (s SyncGwCluster) generateFleetUnitJson() (string, error) {
         {
             "section":"Service",
             "name":"ExecStartPre",
-            "value":"/usr/bin/docker run --net=host tleyden5iwx/sync-gateway-coreos:{{ .CONTAINER_TAG }} update-wrapper couchbase-cluster wait-until-running"
+            "value":"/usr/bin/docker run --net=host samkohli/sync-gateway-coreos:{{ .CONTAINER_TAG }} update-wrapper couchbase-cluster wait-until-running"
         },
         {
             "section":"Service",
@@ -469,7 +469,7 @@ func (s SyncGwCluster) generateFleetUnitJson() (string, error) {
         {
             "section":"Service",
             "name":"ExecStart",
-            "value":"/bin/bash -c 'SYNC_GW_COMMIT=$(etcdctl get /couchbase.com/sync-gateway/commit);  /usr/bin/docker run --name sync_gw --net=host -v /home/core:/home/core tleyden5iwx/sync-gateway-coreos sync-gw-start -c $SYNC_GW_COMMIT -g  /home/core/config.json'"
+            "value":"/bin/bash -c 'SYNC_GW_COMMIT=$(etcdctl get /couchbase.com/sync-gateway/commit);  /usr/bin/docker run --name sync_gw --net=host -v /home/core:/home/core samkohli/sync-gateway-coreos sync-gw-start -c $SYNC_GW_COMMIT -g  /home/core/config.json'"
         },
         {
             "section":"Service",
