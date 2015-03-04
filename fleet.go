@@ -298,7 +298,7 @@ func (c CouchbaseFleet) generateNodeFleetUnitJson() (string, error) {
         {
             "section":"Service",
             "name":"ExecStartPre",
-            "value":"/usr/bin/docker pull tleyden5iwx/couchbase-server-{{ .CB_VERSION }}:{{ .CONTAINER_TAG }}"
+            "value":"/usr/bin/docker pull samkohli/couchbase-server-{{ .CB_VERSION }}:{{ .CONTAINER_TAG }}"
         },
         {
             "section":"Service",
@@ -308,7 +308,7 @@ func (c CouchbaseFleet) generateNodeFleetUnitJson() (string, error) {
         {
             "section":"Service",
             "name":"ExecStart",
-            "value":"/bin/bash -c '/usr/bin/docker run --name couchbase -v /opt/couchbase/var:/opt/couchbase/var --net=host tleyden5iwx/couchbase-server-{{ .CB_VERSION }}:{{ .CONTAINER_TAG }} couchbase-start'"
+            "value":"/bin/bash -c '/usr/bin/docker run --name couchbase -v /opt/couchbase/var:/opt/couchbase/var --net=host samkohli/couchbase-server-{{ .CB_VERSION }}:{{ .CONTAINER_TAG }} couchbase-start'"
         },
         {
             "section":"Service",
