@@ -1,7 +1,7 @@
 
 FROM ubuntu:14.04
 
-MAINTAINER Traun Leyden <tleyden@couchbase.com>
+MAINTAINER Sameer Kohli <sk@netclickonline.com>
 
 ENV GOPATH /opt/go
 ENV GOROOT /usr/local/go
@@ -35,6 +35,6 @@ RUN git clone https://github.com/fgimenez/.emacs.d.git /root/.emacs.d && \
     git checkout origin/go
 
 # Install couchbase-cluster-go
-RUN godep get github.com/tleyden/couchbase-cluster-go/...
+RUN godep get github.com/samkohli/couchbase-cluster-go/...
 
 
