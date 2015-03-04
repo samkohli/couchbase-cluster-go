@@ -303,7 +303,7 @@ func (c CouchbaseFleet) generateNodeFleetUnitJson() (string, error) {
         {
             "section":"Service",
             "name":"ExecStartPre",
-            "value":"/usr/bin/docker pull tleyden5iwx/couchbase-cluster-go:{{ .CONTAINER_TAG }}"
+            "value":"/usr/bin/docker pull samkohli/couchbase-cluster-go:{{ .CONTAINER_TAG }}"
         },
         {
             "section":"Service",
@@ -313,7 +313,7 @@ func (c CouchbaseFleet) generateNodeFleetUnitJson() (string, error) {
         {
             "section":"Service",
             "name":"ExecStop",
-            "value":"/bin/bash -c '/usr/bin/docker run --net=host tleyden5iwx/couchbase-cluster-go:{{ .CONTAINER_TAG }} update-wrapper couchbase-cluster remove-and-rebalance --local-ip $COREOS_PUBLIC_IPV4; sudo docker stop couchbase'"
+            "value":"/bin/bash -c '/usr/bin/docker run --net=host samkohli/couchbase-cluster-go:{{ .CONTAINER_TAG }} update-wrapper couchbase-cluster remove-and-rebalance --local-ip $COREOS_PUBLIC_IPV4; sudo docker stop couchbase'"
         },
         {
             "section":"X-Fleet",
@@ -422,12 +422,12 @@ func (c CouchbaseFleet) generateSidekickFleetUnitJson(unitNumber int) (string, e
         {
             "section":"Service",
             "name":"ExecStartPre",
-            "value":"/usr/bin/docker pull tleyden5iwx/couchbase-cluster-go:{{ .CONTAINER_TAG }}"
+            "value":"/usr/bin/docker pull samkohli/couchbase-cluster-go:{{ .CONTAINER_TAG }}"
         },
         {
             "section":"Service",
             "name":"ExecStart",
-            "value":"/bin/bash -c '/usr/bin/docker run --name couchbase-sidekick --net=host tleyden5iwx/couchbase-cluster-go:{{ .CONTAINER_TAG }} update-wrapper couchbase-cluster start-couchbase-sidekick --local-ip=$COREOS_PUBLIC_IPV4'"
+            "value":"/bin/bash -c '/usr/bin/docker run --name couchbase-sidekick --net=host samkohli/couchbase-cluster-go:{{ .CONTAINER_TAG }} update-wrapper couchbase-cluster start-couchbase-sidekick --local-ip=$COREOS_PUBLIC_IPV4'"
         },
         {
             "section":"Service",
