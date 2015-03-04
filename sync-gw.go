@@ -453,7 +453,7 @@ func (s SyncGwCluster) generateFleetUnitJson() (string, error) {
         {
             "section":"Service",
             "name":"ExecStartPre",
-            "value":"/usr/bin/docker pull tleyden5iwx/couchbase-cluster-go:{{ .CONTAINER_TAG }}"
+            "value":"/usr/bin/docker pull samkohli/couchbase-cluster-go:{{ .CONTAINER_TAG }}"
         },
         {
             "section":"Service",
@@ -463,7 +463,7 @@ func (s SyncGwCluster) generateFleetUnitJson() (string, error) {
         {
             "section":"Service",
             "name":"ExecStartPre",
-            "value":"/usr/bin/docker run --net=host -v /home/core:/home/core tleyden5iwx/couchbase-cluster-go:{{ .CONTAINER_TAG }} update-wrapper sync-gw-config rewrite --destination /home/core/config.json"
+            "value":"/usr/bin/docker run --net=host -v /home/core:/home/core samkohli/couchbase-cluster-go:{{ .CONTAINER_TAG }} update-wrapper sync-gw-config rewrite --destination /home/core/config.json"
         },
 
         {
@@ -590,12 +590,12 @@ func (s SyncGwCluster) generateFleetSidekickUnitJson(unitNumber int) (string, er
         {
             "section":"Service",
             "name":"ExecStartPre",
-            "value":"/usr/bin/docker pull tleyden5iwx/couchbase-cluster-go:{{ .CONTAINER_TAG }}"
+            "value":"/usr/bin/docker pull samkohli/couchbase-cluster-go:{{ .CONTAINER_TAG }}"
         },
         {
             "section":"Service",
             "name":"ExecStart",
-            "value":"/bin/bash -c '/usr/bin/docker run --name sync-gw-sidekick --net=host tleyden5iwx/couchbase-cluster-go:{{ .CONTAINER_TAG }} update-wrapper sync-gw-cluster launch-sidekick --local-ip=$COREOS_PRIVATE_IPV4'"
+            "value":"/bin/bash -c '/usr/bin/docker run --name sync-gw-sidekick --net=host samkohli/couchbase-cluster-go:{{ .CONTAINER_TAG }} update-wrapper sync-gw-cluster launch-sidekick --local-ip=$COREOS_PRIVATE_IPV4'"
         },
         {
             "section":"Service",
