@@ -448,28 +448,28 @@ func (s SyncGwCluster) generateFleetUnitJson() (string, error) {
         {
             "section":"Service",
             "name":"ExecStartPre",
-            "value":"/usr/bin/docker pull samkohli/sync-gateway-coreos:{{ .CONTAINER_TAG }}"
+            "value":"/usr/bin/docker pull tleyden5iwx/sync-gateway-coreos:{{ .CONTAINER_TAG }}"
         },
         {
             "section":"Service",
             "name":"ExecStartPre",
-            "value":"/usr/bin/docker pull samkohli/couchbase-cluster-go:{{ .CONTAINER_TAG }}"
+            "value":"/usr/bin/docker pull netclick/couchbase-cluster-go:{{ .CONTAINER_TAG }}"
         },
         {
             "section":"Service",
             "name":"ExecStartPre",
-            "value":"/usr/bin/docker run --net=host samkohli/sync-gateway-coreos:{{ .CONTAINER_TAG }} update-wrapper couchbase-cluster wait-until-running"
+            "value":"/usr/bin/docker run --net=host tleyden5iwx/sync-gateway-coreos:{{ .CONTAINER_TAG }} update-wrapper couchbase-cluster wait-until-running"
         },
         {
             "section":"Service",
             "name":"ExecStartPre",
-            "value":"/usr/bin/docker run --net=host -v /home/core:/home/core samkohli/couchbase-cluster-go:{{ .CONTAINER_TAG }} update-wrapper sync-gw-config rewrite --destination /home/core/config.json"
+            "value":"/usr/bin/docker run --net=host -v /home/core:/home/core netclick/couchbase-cluster-go:{{ .CONTAINER_TAG }} update-wrapper sync-gw-config rewrite --destination /home/core/config.json"
         },
 
         {
             "section":"Service",
             "name":"ExecStart",
-            "value":"/bin/bash -c 'SYNC_GW_COMMIT=$(etcdctl get /couchbase.com/sync-gateway/commit);  /usr/bin/docker run --name sync_gw --net=host -v /home/core:/home/core samkohli/sync-gateway-coreos sync-gw-start -c $SYNC_GW_COMMIT -g  /home/core/config.json'"
+            "value":"/bin/bash -c 'SYNC_GW_COMMIT=$(etcdctl get /couchbase.com/sync-gateway/commit);  /usr/bin/docker run --name sync_gw --net=host -v /home/core:/home/core tleyden5iwx/sync-gateway-coreos sync-gw-start -c $SYNC_GW_COMMIT -g  /home/core/config.json'"
         },
         {
             "section":"Service",
@@ -590,12 +590,12 @@ func (s SyncGwCluster) generateFleetSidekickUnitJson(unitNumber int) (string, er
         {
             "section":"Service",
             "name":"ExecStartPre",
-            "value":"/usr/bin/docker pull samkohli/couchbase-cluster-go:{{ .CONTAINER_TAG }}"
+            "value":"/usr/bin/docker pull netclick/couchbase-cluster-go:{{ .CONTAINER_TAG }}"
         },
         {
             "section":"Service",
             "name":"ExecStart",
-            "value":"/bin/bash -c '/usr/bin/docker run --name sync-gw-sidekick --net=host samkohli/couchbase-cluster-go:{{ .CONTAINER_TAG }} update-wrapper sync-gw-cluster launch-sidekick --local-ip=$COREOS_PRIVATE_IPV4'"
+            "value":"/bin/bash -c '/usr/bin/docker run --name sync-gw-sidekick --net=host netclick/couchbase-cluster-go:{{ .CONTAINER_TAG }} update-wrapper sync-gw-cluster launch-sidekick --local-ip=$COREOS_PRIVATE_IPV4'"
         },
         {
             "section":"Service",
