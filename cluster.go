@@ -14,7 +14,7 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"github.com/tleyden/go-etcd/etcd"
+	"github.com/samkohli/go-etcd/etcd"
 )
 
 const (
