@@ -86,12 +86,12 @@ func findEtcdServersFromArgs(args []string) []string {
 
 func updateAndRebuild() {
 
-	// go get -u -v github.com/tleyden/couchbase-cluster-go/...
+	// go get -u -v github.com/samkohli/couchbase-cluster-go/...
 	goGetArgs := []string{
 		"get",
 		"-u",
 		"-v",
-		"github.com/tleyden/couchbase-cluster-go/...",
+		"github.com/samkohli/couchbase-cluster-go/...",
 	}
 	cmdGoGet := exec.Command("go", goGetArgs...)
 	cmdGoGet.Stdout = os.Stdout
