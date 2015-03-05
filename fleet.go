@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/tleyden/go-etcd/etcd"
+	"github.com/samkohli/go-etcd/etcd"
 )
 
 const (
